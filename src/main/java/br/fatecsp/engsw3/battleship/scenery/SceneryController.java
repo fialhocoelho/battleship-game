@@ -34,9 +34,9 @@ public class SceneryController {
     @ResponseBody
     @GetMapping(path = "{id}")
     public ResponseEntity getScenery(@PathVariable int id) {
-        Optional<Scenery> foundUser = repository.findById(id);
-        if (foundUser.isPresent()) {
-            return ResponseEntity.ok(foundUser.get());
+        Optional<Scenery> foundScenery = repository.findById(id);
+        if (foundScenery.isPresent()) {
+            return ResponseEntity.ok(foundScenery.get());
         } else {
             return ResponseEntity.notFound().build();
         }
