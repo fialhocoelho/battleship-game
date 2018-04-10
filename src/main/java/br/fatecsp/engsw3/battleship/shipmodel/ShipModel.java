@@ -1,4 +1,4 @@
-package br.fatecsp.engsw3.battleship.ship;
+package br.fatecsp.engsw3.battleship.shipmodel;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Ship {
+public class ShipModel {
 
     @Id
     @GeneratedValue

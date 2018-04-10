@@ -1,4 +1,4 @@
-package br.fatecsp.engsw3.battleship.ship;
+package br.fatecsp.engsw3.battleship.shipmodel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path = "/ships")
-public class ShipController {
+@RequestMapping(path = "/shipmodels")
+public class ShipModelController {
 
     @Autowired
-    private ShipRepository repository;
+    private ShipModelRepository repository;
 
     @ResponseBody
     @PostMapping
-    public ResponseEntity addShip(@RequestBody Ship ship) {
-        if (ship.getId() == 0) {
-            repository.save(ship);
-            return ResponseEntity.ok("Ship criada!");
+    public ResponseEntity addShip(@RequestBody ShipModel shipModel) {
+        if (shipModel.getId() == 0) {
+            repository.save(shipModel);
+            return ResponseEntity.ok("ShipModel created!");
         } else {
             return ResponseEntity.badRequest().body("Não informar ID, será gerado automáticamente!");
         }
@@ -34,7 +34,7 @@ public class ShipController {
     @ResponseBody
     @GetMapping(path = "{id}")
     public ResponseEntity getShip(@PathVariable int id) {
-        Optional<Ship> naveEncontrada = repository.findById(id);
+        Optional<ShipModel> naveEncontrada = repository.findById(id);
         if (naveEncontrada.isPresent()) {
             return ResponseEntity.ok(naveEncontrada.get());
         } else {
@@ -44,26 +44,26 @@ public class ShipController {
 
     @ResponseBody
     @PutMapping(path = "{id}")
-    public ResponseEntity changeShip(@PathVariable int id, @RequestBody Ship ship) {
-        if (id == ship.getId()) {
+    public ResponseEntity changeShip(@PathVariable int id, @RequestBody ShipModel shipModel) {
+        if (id == shipModel.getId()) {
             if (repository.findById(id).isPresent()) {
-                repository.save(ship);
-                return ResponseEntity.ok("Ship modificada!");
+                repository.save(shipModel);
+                return ResponseEntity.ok("ShipModel modified!");
             } else {
                 return ResponseEntity.notFound().build();
             }
         } else {
-            return ResponseEntity.badRequest().body("Id da ship diferente da request!");
+            return ResponseEntity.badRequest().body("Id da shipmodel diferente da request!");
         }
     }
 
     @ResponseBody
     @DeleteMapping(path = "{id}")
     public ResponseEntity removeShip(@PathVariable int id) {
-        Optional<Ship> naveEncontrada = repository.findById(id);
+        Optional<ShipModel> naveEncontrada = repository.findById(id);
         if (naveEncontrada.isPresent()) {
             repository.deleteById(id);
-            return ResponseEntity.ok("Ship removida");
+            return ResponseEntity.ok("ShipModel removed");
         } else {
             return ResponseEntity.notFound().build();
         }
