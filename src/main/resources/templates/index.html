@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+    	<title>Batalha Intergalatica</title>
+   		<meta charset="UTF-8" />
+        
+        <link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
+        
+    </head>
+    
+    <body>
+    
+        <h1>Welcome!</h1>
+
+        <p> <a href="/login" th:href="@{/login}"> Click here to login </a> </p>
+        
+        <div sec:authorize="isAuthenticated()">
+		  This content is only shown to authenticated users.
+		</div>
+        
+    </body>
+    
+</html>

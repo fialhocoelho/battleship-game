@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<meta charset="UTF-8" />
+     <title>Access-Denied</title>
+      
+</head>
+
+<body>
+
+   <h3>Access Denied Exception</h3>
+   
+   <div>
+   
+	    Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+	    
+	    <form 
+	    	th:action="@{/logout}" method="POST">
+	    	
+	         <input type="submit" value="Logout"/>
+	         
+	    </form>
+	    
+   </div> 	 
+   
+   <p class="error" th:text="${errorMsg}">Error</p>
+   
+</body>
+
+</html> 
