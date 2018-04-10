@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html 
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 	<meta charset="UTF-8" />
@@ -20,22 +20,15 @@
 	<div>
 		<form th:action="@{/login}" method="POST">
 
-			<div>
-				<label> Username : <input type="text" name="username" /></label>
-			</div>
+			<div><label> Username : <input type="text" name="username" /></label></div>
+			<div><label> Password: <input type="password" name="password" /></label></div>
 
-			<div>
-				<label> Password: <input type="password" name="password" /></label>
-			</div>
-
-			<div>
-				<input type="submit" value="Login" />
-			</div>
+			<div><input type="submit" value="Login" /></div>
 
 		</form>
 	</div>
 
-<p> <a href="/index" th:href="@{/index}"> Click here to back to Index </a> </p>
+<p> <a href="/index" th:href="@{/index}"> Click here to go Index </a> </p>
 
 </body>
 

@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <head>
     	<title>Batalha Intergalatica</title>
    		<meta charset="UTF-8" />
-        
-        <link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
+   		
+   		<link th:href="@{/css/main.css}" href="css/main.css" rel="stylesheet">
         
     </head>
     
     <body>
-    
-        <h1>Welcome!</h1>
 
-        <p> <a href="/login" th:href="@{/login}"> Click here to login </a> </p>
-        
-        <div sec:authorize="isAuthenticated()">
-		  This content is only shown to authenticated users.
-		</div>
-        
-    </body>
+	<h1>Batalha Intergalática!</h1>
+
+	<div sec:authorize="isAnonymous()">
+	
+		<p><a href="/login" th:href="@{/login}"> Click here to login </a></p>
+		
+	</div>
+
+	<div sec:authorize="isAuthenticated()">
+	
+		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+		
+		<div>Now is: <b th:text="${execInfo.now.time}"></b><div>
+
+			<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+				<a th:href="@{/admin}" href="/admin">admin page</a>
+			</div>
+
+
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Log Out" />
+			</form>
+
+	</div>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
     
 </html>

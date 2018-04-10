@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http
         .authorizeRequests()
-	        .antMatchers("/", "/index").permitAll() // páginas permitidas por todos
+	        .antMatchers("/", "/welcome", "/index").permitAll() // páginas permitidas por todos
 	        .antMatchers("/admin").hasRole("ADMIN")
 	        .anyRequest().authenticated() // qualquer outra requisicao precisa estar autenticado?
 	        
@@ -32,12 +32,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.and().formLogin()
 		        .loginPage("/login")
 		        .permitAll()
-		        .defaultSuccessUrl("/welcome")
+		        .defaultSuccessUrl("/index", true)
 	
 	        
 	            	// logout configuration
 	            	.and().logout()
-	            	.logoutSuccessUrl("/login")
+	            	.logoutSuccessUrl("/index")
 		    		.logoutUrl("/logout")
 		    		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		        	
@@ -57,7 +57,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws java.lang.Exception{
-		web.ignoring().antMatchers("/materialize/**", "/style/**, /resources/**\", \"/static/**\", \"/css/**\", \"/js/**\", \"/images/**");
+		web.ignoring().antMatchers(
+				"/style/**", 
+				"resources/**", 
+				"/static/**", 
+				"/css/**", 
+				"/js/**", 
+				"/images/**"
+		);
 	}
 	
 }
