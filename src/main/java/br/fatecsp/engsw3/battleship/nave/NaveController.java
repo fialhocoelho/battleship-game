@@ -1,7 +1,5 @@
-package br.fatecsp.engsw3.battleship.controller;
+package br.fatecsp.engsw3.battleship.nave;
 
-import br.fatecsp.engsw3.battleship.model.Nave;
-import br.fatecsp.engsw3.battleship.repository.NaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package br.fatecsp.engsw3.battleship.model;
+package br.fatecsp.engsw3.battleship.nave;
 
 import lombok.Data;
 
