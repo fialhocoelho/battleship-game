@@ -1,4 +1,4 @@
-package br.fatecsp.engsw3.battleship.nave;
+package br.fatecsp.engsw3.battleship.ship;
 
 import lombok.Data;
 
@@ -8,12 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Nave {
+public class Ship {
 
     @Id
     @GeneratedValue
     private int id;
-    private String tipo;
+    private String nome;
     private int tamanho;
 
 }
