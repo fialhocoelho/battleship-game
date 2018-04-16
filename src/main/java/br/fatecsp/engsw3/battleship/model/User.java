@@ -1,21 +1,15 @@
 package br.fatecsp.engsw3.battleship.model;
 
-import java.util.Collection;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.List;
+
+@Data
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
@@ -33,48 +27,12 @@ public class User implements UserDetails {
 	@ManyToMany
 	@JoinTable(
 			name = "user_role", //tabela a ser criada
-			joinColumns = @JoinColumn(name="user_id"),						//coluna a ser criada na nova tabela 
+			joinColumns = @JoinColumn(name="user_id"), //coluna a ser criada na nova tabela
 			inverseJoinColumns = @JoinColumn(name="role_id")
 			)
 	private List<Role> roles;
-	
-	
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

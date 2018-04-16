@@ -1,14 +1,13 @@
 package br.fatecsp.engsw3.battleship.service;
 
+import br.fatecsp.engsw3.battleship.model.User;
+import br.fatecsp.engsw3.battleship.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import br.fatecsp.engsw3.battleship.model.User;
-import br.fatecsp.engsw3.battleship.repository.UserRepository;
 
 @Transactional
 @Service
