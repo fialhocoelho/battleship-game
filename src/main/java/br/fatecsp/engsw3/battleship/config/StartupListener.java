@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -25,18 +26,18 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
     }
 
     private void createAdminUserIfNotExists() {
-        User admin = userRepository.findByUsername("admin");
-        if (admin == null) {
-            admin = new User();
-            admin.setUsername("admin");
-            admin.setPassword("admin");
+        User adminUser = userRepository.findByUsername("admin");
+        if (adminUser == null) {
+            adminUser = new User();
+            adminUser.setUsername("admin");
+            adminUser.setPassword(new BCryptPasswordEncoder().encode("admin"));
             Role admRole = new Role();
             admRole.setRole("ADMIN");
-            admin.setRoles(Collections.singletonList(admRole));
-            userRepository.save(admin);
-            log.info("Admin user created.");
+            adminUser.setRoles(Collections.singletonList(admRole));
+            userRepository.save(adminUser);
+            log.info("##### Admin user created. #####");
         } else {
-            log.info("Admin user already exists.");
+            log.info("##### Admin user already exists. #####");
         }
     }
 

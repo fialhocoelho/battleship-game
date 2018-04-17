@@ -16,34 +16,36 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserService userService; 
+	private UserService userService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
         .authorizeRequests()
 	        .antMatchers("/", "/welcome", "/index").permitAll() // páginas permitidas por todos
-	        .antMatchers("/admin").hasRole("ADMIN")
-	        .anyRequest().authenticated() // qualquer outra requisicao precisa estar autenticado?
+	        .antMatchers("/admin").hasRole("ADMIN") // somente administradores podem acessar
+	        .anyRequest().authenticated() // qualquer outra requisicao precisa estar autenticado
+			.and()
 	        
-	        	// login configuration
-	        	.and().formLogin()
-		        .loginPage("/login")
-		        .permitAll()
-		        .defaultSuccessUrl("/index", true)
-	
-	        
-	            	// logout configuration
-	            	.and().logout()
-	            	.logoutSuccessUrl("/index")
-		    		.logoutUrl("/logout")
-		    		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		        	
-			        	//exception handling configuration
-			        	.and().exceptionHandling() 
-		        		.accessDeniedPage("/error")
-        	;
-			
+			// login configuration
+		.formLogin()
+			.loginPage("/login")
+			.permitAll()
+			.defaultSuccessUrl("/index", true)
+			.and()
+
+
+			// logout configuration
+		.logout()
+			.logoutSuccessUrl("/index")
+			.logoutUrl("/logout")
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.and()
+
+			//exception handling configuration
+		.exceptionHandling()
+			.accessDeniedPage("/error")
+        ;
 	}
 	
 	@Override
