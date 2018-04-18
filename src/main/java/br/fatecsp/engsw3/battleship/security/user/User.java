@@ -1,12 +1,16 @@
-package br.fatecsp.engsw3.battleship.model;
+package br.fatecsp.engsw3.battleship.security.user;
 
+import br.fatecsp.engsw3.battleship.security.role.Role;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +35,7 @@ public class User implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.roles;
+		return roles;
 	}
 
 	@Override

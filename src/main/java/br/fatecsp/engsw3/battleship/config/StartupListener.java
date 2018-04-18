@@ -1,8 +1,8 @@
 package br.fatecsp.engsw3.battleship.config;
 
-import br.fatecsp.engsw3.battleship.model.Role;
-import br.fatecsp.engsw3.battleship.model.User;
-import br.fatecsp.engsw3.battleship.repository.UserRepository;
+import br.fatecsp.engsw3.battleship.security.role.Role;
+import br.fatecsp.engsw3.battleship.security.user.User;
+import br.fatecsp.engsw3.battleship.security.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

@@ -1,6 +1,6 @@
 package br.fatecsp.engsw3.battleship.config;
 
-import br.fatecsp.engsw3.battleship.service.UserService;
+import br.fatecsp.engsw3.battleship.security.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

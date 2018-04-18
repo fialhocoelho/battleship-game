@@ -1,16 +1,12 @@
-package br.fatecsp.engsw3.battleship.service;
+package br.fatecsp.engsw3.battleship.security.user;
 
-import br.fatecsp.engsw3.battleship.model.User;
-import br.fatecsp.engsw3.battleship.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
-@Transactional
-@Service
+@Component
 public class UserService implements UserDetailsService {
 	
 	@Autowired
@@ -18,16 +14,15 @@ public class UserService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		
 		User user = userRepository.findByUsername(username);
 		
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found");
 		}
-		
-		return new org.springframework.security.core.userdetails.User(
-				user.getUsername(), user.getPassword(), true, true, true, true, user.getAuthorities());
+
+		return user;
+
 	}
 		
 }
