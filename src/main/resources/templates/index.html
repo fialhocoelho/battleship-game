@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+    	<title>Batalha Intergalatica</title>
+   		<meta charset="UTF-8" />
+   		
+   		<link th:href="@{/css/main.css}" href="css/main.css" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+
+	<h1>Batalha Intergalática!</h1>
+
+	<div sec:authorize="isAnonymous()">
+	
+		<p><a href="/login" th:href="@{/login}"> Click here to login </a></p>
+		
+	</div>
+
+	<div sec:authorize="isAuthenticated()">
+	
+		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+		
+		<div>Now is: <b th:text="${execInfo.now.time}"></b><div>
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<a th:href="@{/admin}" href="/admin">admin page</a>
+			</div>
+
+
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Log Out" />
+			</form>
+
+	</div>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
+    
+</html>

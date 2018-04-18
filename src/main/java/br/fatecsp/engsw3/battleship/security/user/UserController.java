@@ -1,4 +1,4 @@
-package br.fatecsp.engsw3.battleship.user;
+package br.fatecsp.engsw3.battleship.security.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
