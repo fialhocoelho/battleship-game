@@ -26,7 +26,7 @@
 		
 		<div>Now is: <b th:text="${execInfo.now.time}"></b><div>
 
-			<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+			<div sec:authorize="hasAuthority('ADMIN')">
 				<a th:href="@{/admin}" href="/admin">admin page</a>
 			</div>
 

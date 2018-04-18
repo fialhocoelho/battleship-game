@@ -23,26 +23,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
         .authorizeRequests()
 	        .antMatchers("/", "/welcome", "/index").permitAll() // páginas permitidas por todos
-	        .antMatchers("/admin").hasRole("ADMIN") // somente administradores podem acessar
+	        .antMatchers("/admin").hasAuthority("ADMIN") // somente administradores podem acessar
 	        .anyRequest().authenticated() // qualquer outra requisicao precisa estar autenticado
-			.and()
-	        
-			// login configuration
+
+		// login configuration
+		.and()
 		.formLogin()
 			.loginPage("/login")
 			.permitAll()
 			.defaultSuccessUrl("/index", true)
-			.and()
 
-
-			// logout configuration
+		// logout configuration
+		.and()
 		.logout()
 			.logoutSuccessUrl("/index")
 			.logoutUrl("/logout")
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.and()
 
-			//exception handling configuration
+		//exception handling configuration
+		.and()
 		.exceptionHandling()
 			.accessDeniedPage("/error")
         ;
