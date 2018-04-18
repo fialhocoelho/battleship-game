@@ -1,10 +1,13 @@
 package br.fatecsp.engsw3.battleship.ship;
 
+import br.fatecsp.engsw3.battleship.security.user.User;
 import br.fatecsp.engsw3.battleship.shipmodel.ShipModel;
-import br.fatecsp.engsw3.battleship.user.User;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
