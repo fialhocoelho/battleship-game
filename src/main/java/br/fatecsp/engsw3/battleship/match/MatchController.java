@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping(path = "/matches")
 public class MatchController {
@@ -34,9 +32,9 @@ public class MatchController {
     @ResponseBody
     @GetMapping(path = "{id}")
     public ResponseEntity getMatch(@PathVariable int id) {
-        Optional<Match> foundMatch = repository.findById(id);
-        if (foundMatch.isPresent()) {
-            return ResponseEntity.ok(foundMatch.get());
+        Match foundMatch = repository.findOne(id);
+        if (foundMatch != null) {
+            return ResponseEntity.ok(foundMatch);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -46,7 +44,7 @@ public class MatchController {
     @PutMapping(path = "{id}")
     public ResponseEntity changeMatch(@PathVariable int id, @RequestBody Match match) {
         if (id == match.getId()) {
-            if (repository.findById(id).isPresent()) {
+            if (repository.findOne(id) != null) {
                 repository.save(match);
                 return ResponseEntity.ok("Match modified!");
             } else {
@@ -60,9 +58,9 @@ public class MatchController {
     @ResponseBody
     @DeleteMapping(path = "{id}")
     public ResponseEntity removeMatch(@PathVariable int id) {
-        Optional<Match> foundMatch = repository.findById(id);
-        if (foundMatch.isPresent()) {
-            repository.deleteById(id);
+        Match foundMatch = repository.findOne(id);
+        if (foundMatch != null) {
+            repository.delete(id);
             return ResponseEntity.ok("Match removed!");
         } else {
             return ResponseEntity.notFound().build();

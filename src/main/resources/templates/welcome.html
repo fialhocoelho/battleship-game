@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" 
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-	
-<head>
-	<meta charset="UTF-8" />
-	<title>Welcome to Battleship!</title>
-	
-</head>
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		layout:decorate="~{layout}" >
 
-<body>
+	<head>
+		<title>Batalha Intergalática</title>
+	</head>
 
-	<a href="/index" th:href="@{/index}"> Click here to Enter the Batalha </a>
-	
+	<body>
+		<div layout:fragment="content">
+			<div class="page-header">
+				<h1><span sec:authentication="principal.username"></span>, bem vindo à Batalha Intergalática!</h1>
+			</div>
+			<p>
+				Use o menu acima para navegar.
+			</p>
+		</div>
+	</body>
 
-	
-	<br>
-
-
-</body>
 </html>

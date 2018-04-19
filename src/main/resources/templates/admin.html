@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-	
-<head>
-	<title>Admin Page</title>
-	<meta charset="UTF-8" />
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		layout:decorate="~{layout}" >
 
-	
-</head>
+    <head>
+        <title>Batalha Intergalática</title>
+    </head>
 
-<body>
-	Admin Page
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-	Now is: <b th:text="${execInfo.now.time}"></b>
-	
-	<br>
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Log Out" />
-	</form>
+    <body>
+        <div layout:fragment="content">
+            Admin Page
+            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+            Now is: <b th:text="${execInfo.now.time}"></b>
+        </div>
+    </body>
 
-</body>
 </html>
