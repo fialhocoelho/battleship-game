@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping(path = "/sceneries")
 public class SceneryController {
@@ -34,9 +32,9 @@ public class SceneryController {
     @ResponseBody
     @GetMapping(path = "{id}")
     public ResponseEntity getScenery(@PathVariable int id) {
-        Optional<Scenery> foundScenery = repository.findById(id);
-        if (foundScenery.isPresent()) {
-            return ResponseEntity.ok(foundScenery.get());
+        Scenery foundScenery = repository.findOne(id);
+        if (foundScenery != null) {
+            return ResponseEntity.ok(foundScenery);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -46,7 +44,7 @@ public class SceneryController {
     @PutMapping(path = "{id}")
     public ResponseEntity changeScenery(@PathVariable int id, @RequestBody Scenery scenery) {
         if (id == scenery.getId()) {
-            if (repository.findById(id).isPresent()) {
+            if (repository.findOne(id) != null) {
                 repository.save(scenery);
                 return ResponseEntity.ok("Scenery modified!");
             } else {
@@ -60,9 +58,9 @@ public class SceneryController {
     @ResponseBody
     @DeleteMapping(path = "{id}")
     public ResponseEntity removeScenery(@PathVariable int id) {
-        Optional<Scenery> foundScenery = repository.findById(id);
-        if (foundScenery.isPresent()) {
-            repository.deleteById(id);
+        Scenery foundScenery = repository.findOne(id);
+        if (foundScenery != null) {
+            repository.delete(id);
             return ResponseEntity.ok("Scenery removed!");
         } else {
             return ResponseEntity.notFound().build();

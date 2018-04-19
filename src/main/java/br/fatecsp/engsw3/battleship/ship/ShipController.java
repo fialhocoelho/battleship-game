@@ -18,7 +18,7 @@ public class ShipController {
     }
 
     public Ship getShip(int id) {
-        return repository.findById(id).get();
+        return repository.findOne(id);
     }
 
     public void changeShip(Ship ship) {

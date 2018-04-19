@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping(path = "/users")
 public class UserController {
@@ -34,9 +32,9 @@ public class UserController {
     @ResponseBody
     @GetMapping(path = "{id}")
     public ResponseEntity getUser(@PathVariable int id) {
-        Optional<User> foundUser = repository.findById(id);
-        if (foundUser.isPresent()) {
-            return ResponseEntity.ok(foundUser.get());
+        User foundUser = repository.findOne(id);
+        if (foundUser != null) {
+            return ResponseEntity.ok(foundUser);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -46,7 +44,7 @@ public class UserController {
     @PutMapping(path = "{id}")
     public ResponseEntity changeUser(@PathVariable int id, @RequestBody User user) {
         if (id == user.getId()) {
-            if (repository.findById(id).isPresent()) {
+            if (repository.findOne(id) != null) {
                 repository.save(user);
                 return ResponseEntity.ok("User modified!");
             } else {
@@ -60,9 +58,9 @@ public class UserController {
     @ResponseBody
     @DeleteMapping(path = "{id}")
     public ResponseEntity removeUser(@PathVariable int id) {
-        Optional<User> foundUser = repository.findById(id);
-        if (foundUser.isPresent()) {
-            repository.deleteById(id);
+        User foundUser = repository.findOne(id);
+        if (foundUser != null) {
+            repository.delete(id);
             return ResponseEntity.ok("User removed!");
         } else {
             return ResponseEntity.notFound().build();
