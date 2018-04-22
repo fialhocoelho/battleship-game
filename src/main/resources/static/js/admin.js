@@ -1,7 +1,16 @@
-$('.radio-group .radio').click(function () {
-    $(this).parent().find('.radio').removeClass('selected');
-    $(this).addClass('selected');
-    var val = $(this).attr('data-value');
-    //alert(val);
-    $(this).parent().find('input').val(val);
+$('input:radio[name="command"]').change(function () {
+    if ($(this).val() == 1) {
+        $("#tabuleiro").attr("hidden", false);
+        $(this).attr("checked", true);
+
+        $("#background").attr("hidden", true);
+        $(this).attr("checked", true);
+
+    } else if ($(this).val() == 2) {
+        $("#background").attr("hidden", false);
+        $(this).attr("checked", true);
+
+        $("#tabuleiro").attr("hidden", true);
+        $(this).attr("checked", true);
+    }
 });

@@ -20,7 +20,7 @@
         <form name="formul">
             <!-- Area de ajustes -->
             <div>
-                <input type="radio" name="command" method="post" checked="checked"> Selecione o tamanho da matriz
+                <input type="radio" value="1" name="command" method="post" checked> Selecione o tamanho da matriz
                 <br><br> Horizontal:
                 <select name=horizontal >
                     <option value="7">7</option>
@@ -42,7 +42,14 @@
             </div>
             <hr>
             <div>
-                <input type="radio" name="command"> Usuários cadastrados
+                <input type="radio" value="2" name="command"> Upload de Imagem para background
+                <br><br> Arquivo: <input type="file" name="meuInput" accept="image/*" />
+                <input type="submit" value="Enviar">
+                <br><br>
+            </div>
+            <hr>
+            <div id="users">
+                Usuários cadastrados
                 <br><br>
                 <div class="form-group">
                     <input name="username" class="form-control" placeholder="Usuário" readonly/>
@@ -59,20 +66,13 @@
                 </div>
                 <!-- upload de background -->
             </div>
-            <hr>
-            <div>
-                <input type="radio" name="command"> Upload de Imagem para background
-                <br><br> Arquivo: <input type="file" name="meuInput" accept="image/*" />
-                <input type="submit" value="Enviar">
-                <br><br>
-            </div>
         </form>
     </div>
     <div class="result" align="center">
         <!-- Area de preview -->
         <div id="tabuleiro">
         </div>
-        <div>
+        <div id="background" hidden>
             
         </div>
     </div>
