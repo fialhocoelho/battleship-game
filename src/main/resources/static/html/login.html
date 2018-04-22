@@ -2,33 +2,38 @@
 <html
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
-
+        
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <meta charset="UTF-8">
         <title>Batalha Intergalática</title>
 
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
-        <link th:href="@{/css/style.css}" rel="stylesheet"/>
+        <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
     </head>
 
     <body style="background-color: #f9f9f9">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <div th:if="${param.error}">
+                
+                <!-- -----------DESCOMENTAR DEPOIS---------- -->
+                <!-- <div th:if="${param.error}">
                     <div class="alert alert-danger">Usuário e/ou inválidos!</div>
-                </div>
+                </div> -->
 
-                <div th:if="${param.logout}">
+                <!-- <div th:if="${param.logout}">
                     <div class="alert alert-info">Até logo!</div>
-                </div>
+                </div> -->
+                <!-- -----------DESCOMENTAR DEPOIS---------- -->
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">ENTRE</h3>
+                        <h3 class="panel-title">LOGIN</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="/login" method="post">
+                        <form action="admin.html" method="post">
                             <div class="form-group">
                                 <input name="username" class="form-control" placeholder="Usuário"/>
                             </div>

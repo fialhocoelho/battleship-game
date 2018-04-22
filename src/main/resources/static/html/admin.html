@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+    layout:decorate="~{layout}">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
+
+    <title>Batalha Intergalática</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        Área de Administrador
+        <h1 th:inline="text">Olá, Administrador</h1>
+        <!-- <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1> -->
+    </div>
+    <div class="commands linha-vertical">
+        <form name="formul">
+            <!-- Area de ajustes -->
+            <div>
+                <input type="radio" name="command" method="post" checked="checked"> Selecione o tamanho da matriz
+                <br><br> Horizontal:
+                <select name=horizontal >
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select> Vertical:
+                <select name=vertical>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <div>
+                    <br>
+                    <input type=button id="montarMatriz" value="Montar Matriz" onclick="valorMatriz()"> 
+                </div>
+                <!-- tamanho de matriz -->
+            </div>
+            <hr>
+            <div>
+                <input type="radio" name="command"> Usuários cadastrados
+                <br><br>
+                <div class="form-group">
+                    <input name="username" class="form-control" placeholder="Usuário" readonly/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Senha" />
+                </div>
+                <div class="form-group">
+                    <br>
+                    <button class="btn btn-primary btn-block anterior"><</button>
+                    <button class="btn btn-primary btn-block excluir">Excluir</button>
+                    <button class="btn btn-primary btn-block salvar">Salvar</button>
+                    <button class="btn btn-primary btn-block proximo">></button>
+                </div>
+                <!-- upload de background -->
+            </div>
+            <hr>
+            <div>
+                <input type="radio" name="command"> Upload de Imagem para background
+                <br><br> Arquivo: <input type="file" name="meuInput" accept="image/*" />
+                <input type="submit" value="Enviar">
+                <br><br>
+            </div>
+        </form>
+    </div>
+    <div class="result" align="center">
+        <!-- Area de preview -->
+        <div id="tabuleiro">
+        </div>
+        <div>
+            
+        </div>
+    </div>
+    <script src="../js/admin.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/montarMatriz.js"></script>
+</body>
+
+</html>
