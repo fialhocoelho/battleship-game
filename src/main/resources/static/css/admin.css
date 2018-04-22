@@ -1,0 +1,39 @@
+.commands{
+    width: 40%;
+    float: left;
+    height: 100%;
+}
+
+.linha-vertical {
+ border-right: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+ box-sizing: border-box;
+}
+
+.result{
+    float:right;
+    height: 100%;
+    margin-right: 15%;
+}
+
+.linha{	
+    height:50px;
+}
+
+.casa{
+	width:50px;
+	height:100%;	
+	float:left;
+    cursor: pointer;
+}
+
+.casa_branca{
+    border:solid 1px;
+}
+
+.casa_preta{
+    border:solid 1px;
+}
+
+.casa_selecionada{
+	background-color: #FF0000;
+}
