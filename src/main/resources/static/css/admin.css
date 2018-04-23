@@ -1,39 +1,39 @@
-.commands{
+.commands {
     width: 40%;
     float: left;
     height: 100%;
 }
 
 .linha-vertical {
- border-right: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
- box-sizing: border-box;
+    border-right: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+    box-sizing: border-box;
 }
 
-.result{
+.result {
     float:right;
     height: 100%;
     margin-right: 15%;
 }
 
-.linha{	
+.linha {
     height:50px;
 }
 
-.casa{
+.casa {
 	width:50px;
 	height:100%;	
 	float:left;
     cursor: pointer;
 }
 
-.casa_branca{
+.casa_branca {
     border:solid 1px;
 }
 
-.casa_preta{
+.casa_preta {
     border:solid 1px;
 }
 
-.casa_selecionada{
+.casa_selecionada {
 	background-color: #FF0000;
 }

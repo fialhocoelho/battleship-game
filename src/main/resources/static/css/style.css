@@ -5,3 +5,20 @@ body {
 footer {
 	color: #AAA
 }
+
+a:link {
+    color:#777;
+    text-decoration:none;
+}
+a:visited {
+    color:#888;
+    text-decoration:none;
+}
+a:hover {
+    color:#000000;
+    text-decoration:underline;
+}
+a:active {
+    color:#BBB;
+    text-decoration:underline;
+}

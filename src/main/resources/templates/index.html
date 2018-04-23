@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Batalha Intergalática</title>
+
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/style.css}" rel="stylesheet" />
+
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container">
+			<hr />
+			<div layout:fragment="content">
+				ESCREVER ALGO AQUI !!!
+			</div>
+		</div>
+
+		<div class="container">
+			<hr />
+			<footer>
+				<h4>Trabalho realizado para a matéria de Engenharia de Software III da <a href="http://www.fatecsp.br/" target="_blank">Fatec São Paulo</a></h4>
+			</footer>
+		</div>
+	</body>
+
+</html>

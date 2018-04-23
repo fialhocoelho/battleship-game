@@ -4,36 +4,31 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
         
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <meta charset="UTF-8">
         <title>Batalha Intergalática</title>
 
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
-        <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+        <link th:href="@{/css/style.css}" rel="stylesheet"/>
     </head>
 
     <body style="background-color: #f9f9f9">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                
-                <!-- -----------DESCOMENTAR DEPOIS---------- -->
-                <!-- <div th:if="${param.error}">
+                <div th:if="${param.error}">
                     <div class="alert alert-danger">Usuário e/ou inválidos!</div>
-                </div> -->
-
-                <!-- <div th:if="${param.logout}">
+                </div>
+                <div th:if="${param.logout}">
                     <div class="alert alert-info">Até logo!</div>
-                </div> -->
-                <!-- -----------DESCOMENTAR DEPOIS---------- -->
+                </div>
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">LOGIN</h3>
+                        <h3 class="panel-title">ENTRAR</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="admin.html" method="post">
+                        <form action="/login" method="post">
                             <div class="form-group">
                                 <input name="username" class="form-control" placeholder="Usuário"/>
                             </div>
