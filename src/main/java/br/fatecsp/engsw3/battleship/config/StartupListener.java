@@ -21,8 +21,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        log.info("###### onApplicationEvent ######");
         createAdminUserIfNotExists();
+        createDefaultUserIfNotExists();
     }
 
     private void createAdminUserIfNotExists() {
@@ -38,6 +38,19 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
             log.info("##### Admin user created. #####");
         } else {
             log.info("##### Admin user already exists. #####");
+        }
+    }
+
+    private void createDefaultUserIfNotExists() {
+        User user = userRepository.findByUsername("user");
+        if (user == null) {
+            user = new User();
+            user.setUsername("user");
+            user.setPassword(new BCryptPasswordEncoder().encode("user"));
+            userRepository.save(user);
+            log.info("##### Default user created. #####");
+        } else {
+            log.info("##### Default user already exists. #####");
         }
     }
 
