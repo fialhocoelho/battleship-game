@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Batalha Intergalática</title>
+        <link rel="shortcut icon" href="images/favicon.ico" />
 
 		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
@@ -16,26 +17,29 @@
 		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</head>
 
-	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
+	<body background="images/spaceship.jpg">
+		<nav class="navbar navbar-dark bg-dark navbar-fixed-top alpha-black">
 			<div class="container">
+                <span class="navbar-text">
+                    Batalha Intergalática
+                </span>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
 				</ul>
 			</div>
 		</nav>
 
-		<div class="container">
+		<div class="container alpha-black">
 			<hr />
 			<div layout:fragment="content">
-				ESCREVER ALGO AQUI !!!
+                <h3>Já jogou batalha naval? Pois se prepare para a Batalha Intergalática!!!</h3>
 			</div>
 		</div>
 
-		<div class="container">
+		<div class="container mx-auto alpha-black">
 			<hr />
 			<footer>
-				<h4>Trabalho realizado para a matéria de Engenharia de Software III da <a href="http://www.fatecsp.br/" target="_blank">Fatec São Paulo</a></h4>
+				<h5>Projeto realizado para a matéria de Engenharia de Software III da <a href="http://www.fatecsp.br/" target="_blank">Fatec São Paulo</a></h5>
 			</footer>
 		</div>
 	</body>
